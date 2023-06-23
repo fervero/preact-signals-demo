@@ -2,23 +2,25 @@ import { useMemo, useState } from "preact/hooks";
 import { RenderCount } from "./RenderCount.jsx";
 
 export const CalcWithHooks = () => {
-  const income = useMemo(() => 0, []);
-  const cat = useMemo(() => 0, []);
+  const [income, setIncome] = useState(100);
+  const [cat, setCat] = useState(0);
 
   const onIncomeChange = (event) => {
-    throw new Error("Not implemented");
+    setIncome(+event.target.value);
   };
 
   const onCatChange = (event) => {
-    throw new Error("Not implemented");
+    setCat(+event.target.value);
   };
 
-  const nonEssentials = useMemo(() => 0, []);
+  const nonEssentials = useMemo(() => {
+    return income - cat;
+  }, [income, cat]);
 
-  const showBottomLine = useMemo(() => true, []);
+  const [showBottomLine, setShowBottomLine] = useState(true);
 
   const onShowBottomLineChange = (event) => {
-    throw new Error("Not implemented");
+    setShowBottomLine(event.target.checked);
   };
 
   return (

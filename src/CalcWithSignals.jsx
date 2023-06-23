@@ -1,4 +1,4 @@
-import { useMemo, useState } from "preact/hooks";
+import { useMemo, useState, useEffect, useRef } from "preact/hooks";
 import { RenderCount } from "./RenderCount.jsx";
 
 export const CalcWithSignals = () => {
