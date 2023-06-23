@@ -1,17 +1,17 @@
 import { useMemo, useState } from "preact/hooks";
 import { RenderCount } from "./RenderCount.jsx";
 import { useComputed, useSignal } from "@preact/signals";
+import { setCat, cat } from "./store.js";
 
 export const CalcWithSignals = () => {
   const income = useSignal(100);
-  const cat = useSignal(0);
 
   const onIncomeChange = (event) => {
     income.value = +event.target.value;
   };
 
   const onCatChange = (event) => {
-    cat.value = +event.target.value;
+    setCat(event.target.value);
   };
 
   const nonEssentials = useComputed(() => {

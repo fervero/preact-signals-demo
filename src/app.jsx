@@ -7,6 +7,7 @@ export function App() {
     <>
       <h1>Household budget calculator</h1>
       <CalcWithSignals />
+      <CalcWithSignals />
       <CalcWithHooks />
     </>
   );
