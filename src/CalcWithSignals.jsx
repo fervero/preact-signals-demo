@@ -1,24 +1,27 @@
 import { useMemo, useState } from "preact/hooks";
 import { RenderCount } from "./RenderCount.jsx";
+import { useComputed, useSignal } from "@preact/signals";
 
 export const CalcWithSignals = () => {
-  const income = useMemo(() => 0, []);
-  const cat = useMemo(() => 0, []);
+  const income = useSignal(100);
+  const cat = useSignal(0);
 
   const onIncomeChange = (event) => {
-    throw new Error("Not implemented");
+    income.value = +event.target.value;
   };
 
   const onCatChange = (event) => {
-    throw new Error("Not implemented");
+    cat.value = +event.target.value;
   };
 
-  const nonEssentials = useMemo(() => 0, []);
+  const nonEssentials = useComputed(() => {
+    return income - cat;
+  });
 
-  const showBottomLine = useMemo(() => true, []);
+  const showBottomLine = useSignal(true);
 
   const onShowBottomLineChange = (event) => {
-    throw new Error("Not implemented");
+    showBottomLine.value = event.target.checked;
   };
 
   return (
@@ -49,7 +52,7 @@ export const CalcWithSignals = () => {
               />
             </td>
             <td>
-              {showBottomLine ? (
+              {showBottomLine.value ? (
                 <input
                   type="text"
                   value={nonEssentials}
