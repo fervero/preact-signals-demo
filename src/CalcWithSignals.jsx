@@ -1,9 +1,10 @@
-import { useMemo, useState } from "preact/hooks";
+import { useContext, useMemo, useState } from "preact/hooks";
 import { RenderCount } from "./RenderCount.jsx";
 import { useComputed, useSignal } from "@preact/signals";
-import { setCat, cat } from "./store.js";
+import { AppState } from "./AppState.js";
 
 export const CalcWithSignals = () => {
+  const { cat, setCat } = useContext(AppState);
   const income = useSignal(100);
 
   const onIncomeChange = (event) => {
