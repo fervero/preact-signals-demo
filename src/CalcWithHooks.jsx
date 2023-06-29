@@ -1,7 +1,13 @@
-import { useMemo, useState } from "preact/hooks";
+import { useEffect, useMemo, useRef, useState } from "preact/hooks";
 import { RenderCount } from "./RenderCount.jsx";
 
 export const CalcWithHooks = () => {
+  const renderCount = useRef(0);
+
+  useEffect(() => {
+    renderCount.current += 1;
+  });
+
   const [income, setIncome] = useState(100);
   const [cat, setCat] = useState(0);
 
@@ -65,7 +71,7 @@ export const CalcWithHooks = () => {
           </tr>
         </tbody>
       </table>
-      {/*<RenderCount count={1} />*/}
+      <RenderCount count={renderCount.current} />
     </div>
   );
 };
