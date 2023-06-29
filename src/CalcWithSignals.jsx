@@ -1,8 +1,14 @@
-import { useMemo, useState } from "preact/hooks";
+import { useMemo, useState, useEffect, useRef } from "preact/hooks";
 import { RenderCount } from "./RenderCount.jsx";
 import { useComputed, useSignal } from "@preact/signals";
 
 export const CalcWithSignals = () => {
+  const renderCount = useRef(0);
+
+  useEffect(() => {
+    renderCount.current += 1;
+  });
+
   const income = useSignal(100);
   const cat = useSignal(0);
 
@@ -66,7 +72,7 @@ export const CalcWithSignals = () => {
           </tr>
         </tbody>
       </table>
-      {/*<RenderCount count={1} />*/}
+      {/*<RenderCount count={renderCount.current} />*/}
     </div>
   );
 };
