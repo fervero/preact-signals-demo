@@ -20,6 +20,7 @@ export const CalcWithHooks = () => {
   };
 
   const nonEssentials = useMemo(() => {
+    console.log("Bottom line is computed " + new Date().toISOString());
     return income - cat;
   }, [income, cat]);
 
