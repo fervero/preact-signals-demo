@@ -21,6 +21,7 @@ export const CalcWithSignals = () => {
   };
 
   const nonEssentials = useComputed(() => {
+    console.log("Bottom line is computed " + new Date().toISOString());
     return income - cat;
   });
 
